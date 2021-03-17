@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robot Control</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/roboticarm.css">
+    <script src="https://kit.fontawesome.com/23f92337cf.js" crossorigin="anonymous"></script>
+    <script type="text/javascript"
+    src="https://static.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
+    <script type="text/javascript" src="https://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row"  style="padding: 2vh 10px 0px 10px;">
+            <div class="navbar_div">
+                <div class="navbar_logo"><h2>Robot Web Suite</h2></div>
+                <div class="logout"><h5><a href="/user/logout"><i class="fas fa-power-off"></i></a></h5></div>
+            </div>
+        </div>
+        <div class="workspace">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="state">
+                        <center><h4>Current Joint States</h4><br>
+                            <div id="statusIndicator" class="sidebar-link">
+                                <p id="connecting">
+                                  Connecting to rosbridge
+                                </p>
+                                <p id="connected" style="color:#00D600; display:none">
+                                  Connected
+                                </p>
+                                <p id="error" style="color:#FF0000; display:none">
+                                  Error in the backend!
+                                </p>
+                                <p id="closed" style="display:none">
+                                  Connection closed.
+                                </p>
+                            </div><br>
+                            <div>
+                                <h5>Joint States (Live)</h5><br>
+                                <p id="p1"></p>
+                                <p id="p2"></p>
+                                <p id="p3"></p>
+                                <p id="p4"></p>
+                                <p id="p5"></p>
+                            </div>
+                        </center>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="controller">
+                        <center><h4>Controller</h4>
+                            <br>
+                            <div class="row">
+                                <button class="control-btn" onpointerdown="xplusDown()" onpointerup="Up()" id="+x">
+                                    +x
+                                </button>
+                                <button class="control-btn" onpointerdown="xminusDown()" onpointerup="Up()" id="+x">
+                                -x
+                                </button>
+                            </div>
+                            <div class="row">
+                                <button class="control-btn" onpointerdown="yplusDown()" onpointerup="Up()" id="+x">
+                                +y
+                                </button>
+                                <button class="control-btn" onpointerdown="yminusDown()" onpointerup="Up()" id="+x">
+                                -y
+                                </button>
+                            </div>
+                            <div class="row">
+                                <button class="control-btn" onpointerdown="zplusDown()" onpointerup="Up()" id="+x">
+                                +z
+                                </button>
+                                <button class="control-btn" onpointerdown="zminusDown()" onpointerup="Up()" id="+x">
+                                -z
+                                </button>
+                            </div>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="/static/js/roboticarm.js"></script>
+</body>
+
+</html>

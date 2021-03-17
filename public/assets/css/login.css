@@ -1,0 +1,155 @@
+.landing_card_div{
+    height: 64vh;
+}
+
+.landing_info_div{
+  padding: 10vh 50px 35px 100px;
+}
+
+.landing_card{
+    font-family: 'Manrope Bold', sans-serif;
+    margin-top: 23vh;
+    border-radius: 47px;
+    background: #f2f2f2;
+    box-shadow:  7px 7px 28px #b1b1b1, 
+                -7px -7px 28px #ffffff;
+    opacity: 0.9;
+    padding: 35px 50px 35px 35px;
+    max-width: 800px;
+    height:auto;
+    overflow: auto;
+    text-align: left;
+}
+
+.loginbutton{
+    width: 100px;
+    height:50px;
+    border-radius: 20px;
+    background: #ffffff;
+    box-shadow:  16px 16px 32px #a8a8a8, 
+                -16px -16px 32px #ffffff;
+}
+
+.navbar_div{
+    font-family: 'Manrope Bold', sans-serif;
+    border-radius: 20px;
+    background: #f2f2f2;
+    box-shadow:  7px 7px 28px #b1b1b1, 
+                -7px -7px 28px #ffffff;
+    opacity: 0.9;
+    padding: 35px 50px 35px 35px;
+    /* height:auto; */
+    overflow: auto;
+    
+    
+    text-align: left;
+}
+
+/* The Modal (background) */
+.modal {
+  padding-top: 23vh;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 10px;
+  /* font-weight: bold; */
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.login_card{
+  font-family: 'Manrope Bold', sans-serif;
+  border-radius: 47px;
+  border-radius: 50px;
+  background: #fefefe;
+  opacity: 1;
+  padding: 35px 5vw 35px 5vw;
+  max-width: 500px;
+  height:auto;
+  overflow: auto;
+  text-align: left;
+}
+
+
+a:link, a:visited, a:hover, a:active {
+  color: #0e0e0e;
+}
+
+
+@media screen and (min-width: 601px) {
+  .navbar_div{
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .navbar_div{
+    font-size: 17px;
+  }
+}
+
+
+
+/* Fonts */
+@font-face {
+    font-family: "Manrope ExtraBold";
+    src: url("/static/fonts/web/Manrope-ExtraBold.woff2") format("woff2"),
+    url("/static/fonts/ttf/Manrope-ExtraBold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 800; }
+  @font-face {
+    font-family: "Manrope Bold";
+    src: url("/static/fonts/web/Manrope-Bold.woff2") format("woff2"),
+    url("/static/fonts/ttf/Manrope-Bold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 700; }
+  @font-face {
+    font-family: "Manrope SemiBold";
+    src: url("/static/fonts/web/Manrope-SemiBold.woff2") format("woff2"),
+    url("/static/fonts/ttf/Manrope-SemiBold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 600; }
+  @font-face {
+    font-family: "Manrope Medium";
+    src: url("/static/fonts/web/Manrope-Medium.woff2") format("woff2"),
+    url("/static/fonts/ttf/Manrope-Medium.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 500; }
+  @font-face {
+    font-family: "Manrope Regular";
+    src: url("/static/fonts/web/Manrope-Regular.woff2") format("woff2"),
+    url("/static/fonts/ttf/Manrope-Regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 400; }
+  @font-face {
+    font-family: "Manrope Light";
+    src: url("/static/fonts/web/Manrope-Light.woff2") format("woff2"),
+    url("/static/fonts/ttf/Manrope-Light.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 300; }
+  @font-face {
+    font-family: "Manrope ExtraLight";
+    src: url("/static/fonts/web/Manrope-ExtraLight.woff2") format("woff2"),
+    url("/static/fonts/ttf/Manrope-ExtraLight.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 200; }

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robot Control</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+    <script src="https://kit.fontawesome.com/23f92337cf.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row"  style="padding: 2vh 10px 0px 10px;">
+            <div class="navbar_div">
+                <div class="navbar_logo"><h2>Robot Web Suite</h2></div>
+                <div class="logout"><h5><a href="/user/logout"><i class="fas fa-power-off"></i></a></h5></div>
+            </div>
+        </div>
+        <div class="menu">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="menu_card">
+                        <center><h4>Robotic Manipulator</h4>
+                            <br>
+                            Control your robotic arm
+                            <br><br>
+                            <a href="/menu/roboticarm">
+                            <button type="button" class="menu_button" id="login_modal_button">
+                                Go to Page
+                            </button>
+                            </a>
+                        </center>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="menu_card">
+                        <center><h4>Autonomous Rover </h4>
+                            <br>
+                            Control your rover
+                            <br><br>
+                            <a href="/menu/rover">
+                                <button type="button" class="menu_button" id="login_modal_button">
+                                    Go to Page
+                                </button>
+                            </a>
+                        </center>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
