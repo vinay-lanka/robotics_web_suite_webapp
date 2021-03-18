@@ -1,3 +1,11 @@
+function connect(){
+    var address = document.getElementById('address').value;
+    console.log(address);
+    // Create a connection to the rosbridge WebSocket server.
+    var url = 'ws://' + address + ':9090';
+    ros.connect(url);
+}
+
 var ros = new ROSLIB.Ros();
 
 // If there is an error on the backend, an 'error' emit will be emitted.
@@ -22,8 +30,7 @@ ros.on('close', function() {
   document.getElementById('connected').style.display = 'none';
   document.getElementById('closed').style.display = 'inline';
 });
-// Create a connection to the rosbridge WebSocket server.
-ros.connect('ws://0.0.0.0:9090');
+
 //JointState Listener
 var listener = new ROSLIB.Topic({
   ros : ros,

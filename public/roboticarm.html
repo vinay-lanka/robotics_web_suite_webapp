@@ -28,10 +28,24 @@
             <div class="row">
                 <div class="col-sm">
                     <div class="state">
-                        <center><h4>Current Joint States</h4><br>
+                        <center>
+                            <h4>Current Joint States</h4><br>
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="form-group" style="text-align: left;">
+                                        <input id="address" type="input-text" class="form-control" placeholder="localhost" name="address" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="col-lg-12 text-center">
+                                        <button onclick="connect()" class="connectbutton" style="width: 80px; height: 40px; border-radius: 14px;">Connect</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
                             <div id="statusIndicator" class="sidebar-link">
                                 <p id="connecting">
-                                  Connecting to rosbridge
+                                  Enter address to connect
                                 </p>
                                 <p id="connected" style="color:#00D600; display:none">
                                   Connected
@@ -59,28 +73,34 @@
                         <center><h4>Controller</h4>
                             <br>
                             <div class="row">
-                                <button class="control-btn" onpointerdown="xplusDown()" onpointerup="Up()" id="+x">
-                                    +x
-                                </button>
-                                <button class="control-btn" onpointerdown="xminusDown()" onpointerup="Up()" id="+x">
-                                -x
-                                </button>
+                                <center>
+                                    <button class="control-btn" onpointerdown="xplusDown()" onpointerup="Up()" id="+x">
+                                        +x
+                                    </button>
+                                    <button class="control-btn" onpointerdown="xminusDown()" onpointerup="Up()" id="+x">
+                                    -x
+                                    </button>
+                                </center>
                             </div>
                             <div class="row">
-                                <button class="control-btn" onpointerdown="yplusDown()" onpointerup="Up()" id="+x">
-                                +y
-                                </button>
-                                <button class="control-btn" onpointerdown="yminusDown()" onpointerup="Up()" id="+x">
-                                -y
-                                </button>
+                                <center>
+                                    <button class="control-btn" onpointerdown="yplusDown()" onpointerup="Up()" id="+x">
+                                    +y
+                                    </button>
+                                    <button class="control-btn" onpointerdown="yminusDown()" onpointerup="Up()" id="+x">
+                                    -y
+                                    </button>
+                                </center>
                             </div>
                             <div class="row">
-                                <button class="control-btn" onpointerdown="zplusDown()" onpointerup="Up()" id="+x">
-                                +z
-                                </button>
-                                <button class="control-btn" onpointerdown="zminusDown()" onpointerup="Up()" id="+x">
-                                -z
-                                </button>
+                                <center>
+                                    <button class="control-btn" onpointerdown="zplusDown()" onpointerup="Up()" id="+x">
+                                    +z
+                                    </button>
+                                    <button class="control-btn" onpointerdown="zminusDown()" onpointerup="Up()" id="+x">
+                                    -z
+                                    </button>
+                                </center>
                             </div>
                         </center>
                     </div>
