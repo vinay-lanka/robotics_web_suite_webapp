@@ -20,16 +20,16 @@
     <div class="container">
         <div class="row"  style="padding: 2vh 10px 0px 10px;">
             <div class="navbar_div">
-                <div class="navbar_logo"><h2>Robot Web Suite</h2></div>
+                <div class="navbar_logo"><a href="/menu/dashboard"><h2>Robot-Web-Suite</h2></a></div>
                 <div class="logout"><h5><a href="/user/logout"><i class="fas fa-power-off"></i></a></h5></div>
             </div>
         </div>
         <div class="workspace">
             <div class="row">
                 <div class="col-sm">
-                    <div class="state">
+                    <div class="connection">
                         <center>
-                            <h4>Current Joint States</h4><br>
+                            <h4>Connection State</h4><br>
                             <div class="row">
                                 <div class="col-sm-8">
                                     <div class="form-group" style="text-align: left;">
@@ -45,7 +45,7 @@
                             <br>
                             <div id="statusIndicator" class="sidebar-link">
                                 <p id="connecting">
-                                  Enter address to connect
+                                  Enter IP address to connect
                                 </p>
                                 <p id="connected" style="color:#00D600; display:none">
                                   Connected
@@ -57,9 +57,13 @@
                                   Connection closed.
                                 </p>
                             </div><br>
+                        </center>
+                    </div>
+                    <div class="state">
+                        <center>
+                            <h4>Joint States (Live)</h4><br>
                             <div>
-                                <h5>Joint States (Live)</h5><br>
-                                <p id="p1"></p>
+                                <p id="p1">Waiting for angles</p>
                                 <p id="p2"></p>
                                 <p id="p3"></p>
                                 <p id="p4"></p>
@@ -72,35 +76,61 @@
                     <div class="controller">
                         <center><h4>Controller</h4>
                             <br>
+                            <button class="control-btn" onclick="start_jog_controller()" style="color:#31ac55; border-width: 0px;">
+                                Start Controller
+                            </button>
+                            <button class="control-btn" onclick="stop_jog_controller()" style="color:#b11224; border-width: 0px;">
+                                Stop Controller
+                            </button>
                             <div class="row">
                                 <center>
                                     <button class="control-btn" onpointerdown="xplusDown()" onpointerup="Up()" id="+x">
                                         +x
                                     </button>
-                                    <button class="control-btn" onpointerdown="xminusDown()" onpointerup="Up()" id="+x">
-                                    -x
+                                    <button class="control-btn" onpointerdown="yplusDown()" onpointerup="Up()" id="+x">
+                                        +y
                                     </button>
+                                    <button class="control-btn" onpointerdown="zplusDown()" onpointerup="Up()" id="+x">
+                                        +z
+                                    </button>
+                                    
                                 </center>
                             </div>
                             <div class="row">
                                 <center>
-                                    <button class="control-btn" onpointerdown="yplusDown()" onpointerup="Up()" id="+x">
-                                    +y
+                                    <button class="control-btn" onpointerdown="xminusDown()" onpointerup="Up()" id="+x">
+                                        -x
                                     </button>
                                     <button class="control-btn" onpointerdown="yminusDown()" onpointerup="Up()" id="+x">
-                                    -y
+                                        -y
+                                    </button>
+                                    <button class="control-btn" onpointerdown="zminusDown()" onpointerup="Up()" id="+x">
+                                        -z
                                     </button>
                                 </center>
                             </div>
+                            <br>
                             <div class="row">
                                 <center>
-                                    <button class="control-btn" onpointerdown="zplusDown()" onpointerup="Up()" id="+x">
-                                    +z
+                                    <input type="number" id="delay" name="delay" placeholder="Delay"><br>
+                                    <button class="control-btn" style="color:#2f9fd7; border-width: 0px;" onclick="savePoint()"id="savePoint">
+                                        Save Point
                                     </button>
-                                    <button class="control-btn" onpointerdown="zminusDown()" onpointerup="Up()" id="+x">
-                                    -z
+                                    <button class="control-btn" style="color:#b11224; border-width: 0px;" onclick="deletePoint()"id="deletePoint">
+                                        Delete Point
+                                    </button>
+                                    <button class="control-btn" style="color:#31ac55; border-width: 0px;" onclick="saveConfig()"id="saveConfig">
+                                        Save Config
                                     </button>
                                 </center>
+                            </div>
+                        </center>
+                    </div>
+                    <div class="configs">
+                        <center>
+                            <h4>Configs</h4><br>
+                            <div class="row">
+                                
                             </div>
                         </center>
                     </div>

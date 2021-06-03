@@ -38,12 +38,15 @@ var listener = new ROSLIB.Topic({
   messageType : 'sensor_msgs/JointState'
 });
 
+var currentState;
+
 listener.subscribe(function(message) {
   document.getElementById("p1").innerHTML = message.position[0]*57.2958;
   document.getElementById("p2").innerHTML = message.position[1]*57.2958;
   document.getElementById("p3").innerHTML = message.position[2]*57.2958;
   document.getElementById("p4").innerHTML = message.position[3]*57.2958;
   document.getElementById("p5").innerHTML = message.position[4]*57.2958;
+  currentState = message;
 });
 
 //jogState Publisher
@@ -227,3 +230,100 @@ function Up() {
     }, 25);
 }
 
+var savePointClient = new ROSLIB.Service({
+    ros : ros,
+    name : '/save_point',
+    serviceType : 'roboticarm_backend/SavePoint'
+});
+function savePoint() {
+    var delayInput = document.getElementById("delay");
+    var request = new ROSLIB.ServiceRequest({
+        delay: parseInt(delayInput.value)
+    });
+    savePointClient.callService(request, function(result) {
+        if(result.response === 200){
+            alert("Point Saved");
+        }else{
+            alert("Error saving point");
+        }
+    });
+}
+
+var deletePointsClient = new ROSLIB.Service({
+    ros : ros,
+    name : '/delete_point',
+    serviceType : 'roboticarm_backend/DeletePoint'
+});
+function deletePoint() {
+    var request = new ROSLIB.ServiceRequest({
+        body: 1
+    });
+
+    deletePointsClient.callService(request, function(result) {
+        if(result.response === 200){
+            alert("Point Deleted");
+        }else{
+            alert("Error deleting point");
+        }
+    });
+}
+
+var saveConfigClient = new ROSLIB.Service({
+    ros : ros,
+    name : '/save_config',
+    serviceType : 'roboticarm_backend/SaveConfig'
+});
+function saveConfig() {
+    var request = new ROSLIB.ServiceRequest({
+        body: 1
+    });
+
+    saveConfigClient.callService(request, function(result) {
+
+        if(result.response === 200){
+            alert("Point Saved");
+        }else{
+            alert("Error saving point");
+        }
+    });
+}
+
+var controllerClient = new ROSLIB.Service({
+    ros : ros,
+    name : '/controller_manager/switch_controller',
+    serviceType : 'controller_manager_msgs/SwitchController'
+});
+
+function start_jog_controller() {
+
+    console.log("called");
+
+    var request = new ROSLIB.ServiceRequest({
+        start_controllers: ['/roboticarm/controller/arm_joint_group_position_controller'],
+        stop_controllers: ['/roboticarm/controller/arm_trajectory_controller'],
+        strictness: 2,
+        start_asap: false,
+        timeout: 0.0
+    });
+
+    controllerClient.callService(request, function(result) {
+        console.log(result);
+    });
+}
+
+function stop_jog_controller() {
+
+    console.log("called");
+
+    var request = new ROSLIB.ServiceRequest({
+        start_controllers: ['/roboticarm/controller/arm_trajectory_controller'],
+        stop_controllers: ['/roboticarm/controller/arm_joint_group_position_controller'],
+        strictness: 2,
+        start_asap: false,
+        timeout: 0.0
+    });
+
+    controllerClient.callService(request, function(result) {
+        console.log(result);
+    });
+}

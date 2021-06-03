@@ -45,7 +45,8 @@
 }
 
 a:link, a:visited, a:hover, a:active {
-    color: #0e0e0e;
+  color: #0e0e0e;
+  text-decoration: none;
 }
 
 @media screen and (min-width: 601px) {

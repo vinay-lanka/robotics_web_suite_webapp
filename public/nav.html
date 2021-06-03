@@ -2,6 +2,15 @@
 <html>
 <head>
 <meta charset="utf-8" />
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Robot Control</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <link rel="stylesheet" href="/static/css/nav.css">
+  <script src="https://kit.fontawesome.com/23f92337cf.js" crossorigin="anonymous"></script>
 <!-- <script type="text/javascript" src="../include/EaselJS/easeljs.js"></script>
 <script type="text/javascript" src="../include/EventEmitter2/eventemitter2.js"></script>
 <script type="text/javascript" src="../include/roslibjs/roslib.js"></script>
@@ -12,39 +21,120 @@
 <script type="text/javascript" src="http://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
 <script type="text/javascript" src="http://static.robotwebtools.org/ros2djs/current/ros2d.min.js"></script>
 <script type="text/javascript" src="http://static.robotwebtools.org/nav2djs/current/nav2d.min.js"></script>
-
-<script type="text/javascript" type="text/javascript">
-
-  function init() {
-    // Connect to ROS.
-    var ros = new ROSLIB.Ros({
-      url : 'ws://localhost:9090'
-    });
-
-    // Create the main viewer.
-    var viewer = new ROS2D.Viewer({
-      divID : 'map',
-      width : 800,
-      height : 800
-    });
-
-    // Setup the map client.
-    var nav = NAV2D.OccupancyGridClientNav({
-      ros : ros,
-      rootObject : viewer.scene,
-      viewer : viewer,
-      serverName : '/move_base',
-      topic : 'map',
-      withOrientation : true
-    });
-    nav.scaleToDimensions(400,400);
-  }
-
-</script>
 </head>
 
-<body onload="init()">
-  <h1>Simple Map Example</h1>
+<body>
+  <div class="container">
+    <div class="row"  style="padding: 2vh 10px 0px 10px;">
+        <div class="navbar_div">
+            <div class="navbar_logo"><a href="/menu/dashboard"><h2>Robot-Web-Suite</h2></a></div>
+            <div class="logout"><h5><a href="/user/logout"><i class="fas fa-power-off"></i></a></h5></div>
+        </div>
+    </div>
+    <div class="workspace">
+        <div class="row">
+            <div class="col-sm">
+                <div class="connection">
+                    <center>
+                        <h4>Connection State</h4><br>
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="form-group" style="text-align: left;">
+                                    <input id="address" type="input-text" class="form-control" placeholder="localhost" name="address" />
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="col-lg-12 text-center">
+                                    <button onclick="connect()" class="connectbutton" style="width: 80px; height: 40px; border-radius: 14px;">Connect</button>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div id="statusIndicator" class="sidebar-link">
+                            <p id="connecting">
+                              Enter address to connect
+                            </p>
+                            <p id="connected" style="color:#00D600; display:none">
+                              Connected
+                            </p>
+                            <p id="error" style="color:#FF0000; display:none">
+                              Error in the backend!
+                            </p>
+                            <p id="closed" style="display:none">
+                              Connection closed.
+                            </p>
+                        </div><br>
+                    </center>
+                </div>
+                <div class="state">
+                  <center>
+                    <h4>Live Map View</h4> <br>
+                    <div id="map"></div>
+                  </center>
+                  
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="controller">
+                    <center><h4>Controller</h4>
+                        <br>
+                        <div class="row">
+                            <center>
+                                <button class="control-btn" onpointerdown="uDown()" onpointerup="Up()" id="+x">
+                                    u
+                                </button>
+                                <button class="control-btn" onpointerdown="frontDown()" onpointerup="Up()" id="+x">
+                                    Front
+                                </button>
+                                <button class="control-btn" onpointerdown="oDown()" onpointerup="Up()" id="+x">
+                                    o
+                                </button>
+                                
+                            </center>
+                        </div>
+                        <div class="row">
+                            <center>
+                                <button class="control-btn" onpointerdown="leftDown()" onpointerup="Up()" id="+x">
+                                    Left
+                                </button>
+                                <button class="control-btn" onpointerdown="stopDown()" onpointerup="Up()" id="+x">
+                                    Stop
+                                </button>
+                                <button class="control-btn" onpointerdown="rightDown()" onpointerup="Up()" id="+x">
+                                    Right
+                                </button>
+                            </center>
+                        </div>
+                        <div class="row">
+                          <center>
+                              <button class="control-btn" onpointerdown="mDown()" onpointerup="Up()" id="+x">
+                                  m
+                              </button>
+                              <button class="control-btn" onpointerdown="backDown()" onpointerup="Up()" id="+x">
+                                  Back
+                              </button>
+                              <button class="control-btn" onpointerdown="dotDown()" onpointerup="Up()" id="+x">
+                                  .
+                              </button>
+                          </center>
+                      </div>
+                        <br>
+                        <div class="row">
+                            <center>
+                                <input type="number" id="delay" name="delay" placeholder="Delay"><br>
+                                <button class="control-btn" style="color:#2f9fd7; border-width: 0px;" onclick="savePoint()"id="savePoint">
+                                    Save Point
+                                </button>
+                            </center>
+                        </div>
+                    </center>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+  <!-- <h1>Simple Map Example</h1>
   <p>
     Run the following commands in the terminal then refresh this page. This will load a map from the
     <tt>ros-groovy-rail-maps</tt>
@@ -55,8 +145,15 @@
     <li><tt>rosrun map_server map_server /opt/ros/groovy/share/rail_maps/maps/ilab.pgm
         0.05</tt></li>
     <li><tt>roslaunch rosbridge_server rosbridge_websocket.launch</tt></li>
-  </ol>
+  </ol> -->
   <!-- <button onclick="sendGoal()">Click me</button> -->
-  <div id="map"></div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+  crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="/static/js/nav.js"></script>
 </body>
 </html>

@@ -20,8 +20,8 @@
 }
 
 a:link, a:visited, a:hover, a:active {
-    color: #0e0e0e;
-    text-decoration: none;
+  color: #0e0e0e;
+  text-decoration: none;
 }
 
 @media screen and (min-width: 601px) {
@@ -48,7 +48,7 @@ a:link, a:visited, a:hover, a:active {
               -7px -7px 28px #ffffff;
   /* opacity: 0.9; */
   padding: 35px 50px 35px 35px;
-  max-width: 400px;
+  max-width: 500px;
   /* height:auto; */
   /* overflow: auto; */
 }
@@ -62,7 +62,7 @@ a:link, a:visited, a:hover, a:active {
     margin-top: 40px;
     /* opacity: 0.9; */
     padding: 35px 50px 35px 35px;
-    max-width: 400px;
+    max-width: 500px;
     /* height:auto; */
     /* overflow: auto; */
 }
@@ -95,18 +95,18 @@ a:link, a:visited, a:hover, a:active {
 }
 
 .control-btn {
-    /* background: #027da2; */
-    background: #e7e7e7;
-    border-radius: 11px;
-    border-color: #0e0e0e;
-    border-width: 2px;
-    padding: 20px;
-    color: #0e0e0e;
-    /* display: inline-block; */
-    text-align: center;
-    margin: 10px;
-    min-width: 100px;
-  }
+  /* background: #027da2; */
+  background: #e7e7e7;
+  border-radius: 11px;
+  border-color: #0e0e0e;
+  border-width: 2px;
+  padding: 20px;
+  color: #0e0e0e;
+  /* display: inline-block; */
+  text-align: center;
+  margin: 10px;
+  min-width: 100px;
+}
 
 ::-webkit-input-placeholder {
   text-align: center;

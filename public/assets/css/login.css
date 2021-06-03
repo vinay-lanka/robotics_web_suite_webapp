@@ -3,7 +3,7 @@
 }
 
 .landing_info_div{
-  padding: 10vh 50px 35px 100px;
+  /* padding: 10vh 50px 35px 100px; */
 }
 
 .landing_card{
@@ -93,12 +93,18 @@
 
 a:link, a:visited, a:hover, a:active {
   color: #0e0e0e;
+  text-decoration: none;
 }
-
 
 @media screen and (min-width: 601px) {
   .navbar_div{
     font-size: 20px;
+  }
+  .landing_info{
+    margin-top: 10vh;
+  }
+  .landing_info_div{
+    padding-left: 100px;
   }
 }
 
@@ -106,6 +112,7 @@ a:link, a:visited, a:hover, a:active {
   .navbar_div{
     font-size: 17px;
   }
+  
 }
 
 
