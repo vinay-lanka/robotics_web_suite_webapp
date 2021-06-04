@@ -94,6 +94,8 @@ a:link, a:visited, a:hover, a:active {
     /* overflow: auto; */
 }
 
+
+
 .control-btn {
   /* background: #027da2; */
   background: #e7e7e7;
@@ -106,6 +108,15 @@ a:link, a:visited, a:hover, a:active {
   text-align: center;
   margin: 10px;
   min-width: 100px;
+}
+.control-btn:hover{
+  /* background: #027da2; */
+  background: #cccccc;
+}
+
+.control-btn:active{
+  /* background: #027da2; */
+  background: #a7a7a7;
 }
 
 ::-webkit-input-placeholder {

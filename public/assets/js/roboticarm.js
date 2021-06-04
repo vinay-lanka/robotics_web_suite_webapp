@@ -243,6 +243,7 @@ function savePoint() {
     savePointClient.callService(request, function(result) {
         if(result.response === 200){
             alert("Point Saved");
+            var delayInput = document.getElementById("delay").value='';
         }else{
             alert("Error saving point");
         }
@@ -283,6 +284,7 @@ function saveConfig() {
 
         if(result.response === 200){
             alert("Config Saved");
+            document.getElementById("name").value='';
         }else{
             alert("Error saving point");
         }
