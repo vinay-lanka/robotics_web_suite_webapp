@@ -119,6 +119,8 @@
                                     <button class="control-btn" style="color:#b11224; border-width: 0px;" onclick="deletePoint()"id="deletePoint">
                                         Delete Point
                                     </button>
+                                    <br>
+                                    <input type="text" id="name" name="name" placeholder="Config Name">
                                     <button class="control-btn" style="color:#31ac55; border-width: 0px;" onclick="saveConfig()"id="saveConfig">
                                         Save Config
                                     </button>
@@ -127,12 +129,16 @@
                         </center>
                     </div>
                     <div class="configs">
-                        <center>
-                            <h4>Configs</h4><br>
-                            <div class="row">
-                                
-                            </div>
-                        </center>
+                        <button class="connectbutton" style="width: 80px; height: 40px; border-radius: 14px; float: right;" onclick="fetchConfigs()" id="fetchConfigs" >
+                            Refresh
+                        </button>
+                        <h4>Configs</h4> 
+                            
+                        <br><br>
+                        
+                        <ul id="configlist" style="font-size: 20px;">
+                        </ul>
+
                     </div>
                 </div>
             </div>

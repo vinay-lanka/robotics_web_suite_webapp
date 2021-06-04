@@ -274,16 +274,59 @@ var saveConfigClient = new ROSLIB.Service({
     serviceType : 'roboticarm_backend/SaveConfig'
 });
 function saveConfig() {
+    var nameInput = document.getElementById("name");
     var request = new ROSLIB.ServiceRequest({
-        body: 1
+        name: nameInput.value
     });
 
     saveConfigClient.callService(request, function(result) {
 
         if(result.response === 200){
-            alert("Point Saved");
+            alert("Config Saved");
         }else{
             alert("Error saving point");
+        }
+    });
+}
+
+var fetchConfigsClient = new ROSLIB.Service({
+    ros : ros,
+    name : '/fetch_configs',
+    serviceType : 'roboticarm_backend/FetchConfigs'
+});
+
+var playPointsClient = new ROSLIB.Service({
+    ros : ros,
+    name : '/play_points',
+    serviceType : 'roboticarm_backend/PlayPoints'
+});
+function fetchConfigs() {
+    document.getElementById("configlist").innerHTML='';
+    var request = new ROSLIB.ServiceRequest({
+        body: 1
+    });
+
+    fetchConfigsClient.callService(request, function(result) {
+        // console.log(JSON.parse(result.response));
+        var lol = JSON.parse(result.response);
+        console.log(lol.length);
+        for (var i = 0; i < lol.length; i++) {
+            var configname = document.createElement("li");
+            configname.setAttribute('id',lol[i]["name"])
+            configname.onclick = function(){
+                var request = new ROSLIB.ServiceRequest({
+                    name: this.id
+                });
+                playPointsClient.callService(request, function(result) {
+                    if(result.response === 200){
+                        alert("Configuration running successfully");
+                    }else{
+                        alert("Error playing config");
+                    }
+                });
+            }
+            configname.innerHTML = lol[i]["name"];      // construct your own html here
+            document.getElementById("configlist").appendChild(configname);
         }
     });
 }
